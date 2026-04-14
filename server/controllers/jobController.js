@@ -27,19 +27,18 @@ export const getJobById = async (req, res) => {
       select: "-password",
     });
 
-    if(!job){
-        return res.json({
-            success: false,
-            message: "Job not found"
-        })
+    if (!job) {
+      return res.json({
+        success: false,
+        message: "Job not found",
+      });
     }
 
     res.json({
-        success: true,
-        job
-    })
-
+      success: true,
+      job,
+    });
   } catch (error) {
-    res.json({success: false, message: error.message})
+    res.json({ success: false, message: error.message });
   }
-};  
+};

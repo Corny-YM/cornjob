@@ -21,7 +21,7 @@ function JobListing() {
     setSelectedCategories((prev) =>
       prev.includes(category)
         ? prev.filter((c) => c !== category)
-        : [...prev, category]
+        : [...prev, category],
     );
   };
 
@@ -29,7 +29,7 @@ function JobListing() {
     setSelectedLocations((prev) =>
       prev.includes(location)
         ? prev.filter((c) => c !== location)
-        : [...prev, location]
+        : [...prev, location],
     );
   };
 
@@ -58,7 +58,7 @@ function JobListing() {
           matchesCategory(job) &&
           matchesLocation(job) &&
           matchesTitle(job) &&
-          matchesSearchLocation(job)
+          matchesSearchLocation(job),
       );
 
     setFilteredJobs(newFilteredJobs);
@@ -66,7 +66,7 @@ function JobListing() {
   }, [jobs, selectedCategories, selectedLocations, searchFilter]);
 
   return (
-    <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8">
+    <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 pb-8">
       {/* Sidebar */}
       <div className="w-full lg:w-1/4 bg-white px-4">
         {/* Current Search */}
@@ -190,7 +190,7 @@ function JobListing() {
                     {index + 1}
                   </button>
                 </a>
-              )
+              ),
             )}
             <a href="#job-list">
               <img
@@ -198,8 +198,8 @@ function JobListing() {
                   setCurrentPage(
                     Math.min(
                       currentPage + 1,
-                      Math.ceil(filteredJobs.length / 6)
-                    )
+                      Math.ceil(filteredJobs.length / 6),
+                    ),
                   )
                 }
                 src={assets.right_arrow_icon}
