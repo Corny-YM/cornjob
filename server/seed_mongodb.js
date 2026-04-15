@@ -38,7 +38,7 @@ db.users.insertMany([
 print("✅ Inserted", db.users.countDocuments(), "users");
 
 // ============================================================
-// 2. COMPANIES
+// 2. COMPANIES  (password cho tất cả: 123456)
 // ============================================================
 db.companies.drop();
 db.companies.insertMany([
@@ -46,25 +46,25 @@ db.companies.insertMany([
     name: "FPT Software",
     email: "hr@fpt.com",
     image: "https://example.com/logo/fpt.png",
-    password: "$2b$10$hashedpassword_fpt",
+    password: "$2b$10$E/3m65MXBAxx3RbeANrGJuwhYyLDPXGR5en9pmKw19/AqGz1iMkZ2",
   },
   {
     name: "VNG Corporation",
     email: "career@vng.com.vn",
     image: "https://example.com/logo/vng.png",
-    password: "$2b$10$hashedpassword_vng",
+    password: "$2b$10$E/3m65MXBAxx3RbeANrGJuwhYyLDPXGR5en9pmKw19/AqGz1iMkZ2",
   },
   {
     name: "Momo",
     email: "jobs@momo.vn",
     image: "https://example.com/logo/momo.png",
-    password: "$2b$10$hashedpassword_momo",
+    password: "$2b$10$E/3m65MXBAxx3RbeANrGJuwhYyLDPXGR5en9pmKw19/AqGz1iMkZ2",
   },
 ]);
 print("✅ Inserted", db.companies.countDocuments(), "companies");
 
 // ============================================================
-// 3. JOBS (dùng _id của companies vừa insert)
+// 3. JOBS
 // ============================================================
 const fpt = db.companies.findOne({ name: "FPT Software" })._id;
 const vng = db.companies.findOne({ name: "VNG Corporation" })._id;
@@ -142,25 +142,24 @@ db.jobapplications.insertMany([
     companyId: vng,
     jobId: job2,
     status: "Accepted",
-    date: Date.now() - 86400000, // 1 ngày trước
+    date: Date.now() - 86400000,
   },
   {
     userId: "user_003",
     companyId: momo,
     jobId: job3,
     status: "Rejected",
-    date: Date.now() - 172800000, // 2 ngày trước
+    date: Date.now() - 172800000,
   },
   {
     userId: "user_001",
     companyId: momo,
     jobId: job3,
     status: "Pending",
-    date: Date.now() - 3600000, // 1 giờ trước
+    date: Date.now() - 3600000,
   },
 ]);
 print("✅ Inserted", db.jobapplications.countDocuments(), "job applications");
 
-// ============================================================
 print("\n🎉 Seed hoàn tất! Database:", DB_NAME);
 print("Collections:", db.getCollectionNames());

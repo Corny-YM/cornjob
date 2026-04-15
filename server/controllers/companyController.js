@@ -54,7 +54,7 @@ export const registerCompany = async (req, res) => {
 
 export const loginCompany = async (req, res) => {
   const { email, password } = req.body;
-
+  console.log("asd", req.body);
   try {
     const company = await Company.findOne({ email });
 
